@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Board - Convex</title>
+    <link rel="stylesheet" href="../n1.css"> <!-- Update the path if necessary -->
+    <link href="https://fonts.googleapis.com/css2?family=Consolas&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #007ACC;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo-img {
+            width: 100px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .canvas {
+            border: 2px solid #6200ea;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+        }
+
+        .tools {
+            margin-top: 20px;
+        }
+
+        .tool-button,
+        .clear-button {
+            font-family: 'Consolas', monospace;
+            background-color: #007ACC;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            /* Adjust the font size if needed */
+        }
+
+        .tool-button:hover,
+        .clear-button:hover {
+            background-color: #005f99;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../logo.png" alt="Convex Logo" class="logo-img">
+            <p class="tagline">Where Creativity Expands</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../projects/projects.html">Projects</a></li>
+                <li><a href="..//upload/upload.html">Upload</a></li>
+                <li><a href="../feedback/feedback.html">Feedback</a></li>
+                <li><a href="../version-control/index.html">Version Control</a></li>
+                <li><a href="#">Design Board</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="design-board">
+            <h2>Your Design Board</h2>
+            <p>Unleash your creativity! Use the tools below to draw and design on your canvas.</p>
+            <canvas id="canvas" width="1200" height="600" class="canvas"></canvas>
+            <div class="tools">
+                <button class="tool-button" onclick="setShape('rectangle')">Draw Rectangle</button>
+                <button class="tool-button" onclick="setShape('circle')">Create Circle</button>
+                <button class="tool-button" onclick="setShape('line')">Draw Line</button>
+                <button class="tool-button" onclick="setTool('pen')">Free Draw</button>
+                <button class="tool-button" onclick="setTool('eraser')">Use Eraser</button>
+                <button class="clear-button" onclick="clearCanvas()">Clear Canvas</button>
+                <input type="color" id="colorPicker" value="#6200ea" onchange="changeColor(this.value)">
+                <input type="range" id="brushSize" min="1" max="20" value="5" onchange="changeBrushSize(this.value)">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Convex - Design Collaboration Platform</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Drawing functionalities
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        let drawing = false;
+        let currentShape = 'rectangle';
+        let currentTool = 'pen';
+        let brushColor = '#6200ea';
+        let brushSize = 5;
+
+        function setShape(shape) {
+            currentShape = shape;
+        }
+
+        function setTool(tool) {
+            currentTool = tool;
+        }
+
+        function changeColor(color) {
+            brushColor = color;
+        }
+
+        function changeBrushSize(size) {
+            brushSize = size;
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        canvas.addEventListener('mousedown', function (e) {
+            drawing = true;
+            ctx.beginPath();
+            ctx.lineWidth = brushSize;
+            ctx.strokeStyle = brushColor;
+            ctx.moveTo(e.offsetX, e.offsetY);
+        });
+
+        canvas.addEventListener('mousemove', function (e) {
+            if (drawing) {
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+            }
+        });
+
+        canvas.addEventListener('mouseup', function () {
+            drawing = false;
+            ctx.closePath();
+        });
+
+        canvas.addEventListener('mouseout', function () {
+            drawing = false;
+            ctx.closePath();
+        });
+    </script>
+</body>
+
+</html>

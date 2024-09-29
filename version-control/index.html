@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Control - Convex</title>
+    <link rel="stylesheet" href="../n1.css"> <!-- Link to the main stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Consolas&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #007ACC;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo-img {
+            width: 100px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #007ACC;
+            margin-bottom: 10px;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../logo.png" alt="Convex Logo" class="logo-img">
+            <p class="tagline">Where Creativity Expands</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../projects/projects.html">Projects</a></li>
+                <li><a href="../upload/upload.html">Upload</a></li>
+                <li><a href="../feedback/feedback.html">Feedback</a></li>
+                <li><a href="index.html">Version Control</a></li>
+                <li><a href="../CONVEX/dashboard.html">Design Board</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Version Control</h2>
+        <p>Manage your design assets with ease by keeping track of various versions. Upload new files, view history, and
+            ensure your work is organized.</p>
+
+        <section class="upload-version">
+            <h3>Upload New Version</h3>
+            <input type="file" id="versionFile">
+            <button onclick="uploadVersion()">Upload</button>
+        </section>
+
+        <section class="version-history">
+            <h3>Version History</h3>
+            <p>Below is the list of all your uploaded versions. You can download or delete them as needed.</p>
+            <ul id="versionList"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Convex - Design Collaboration Platform</p>
+    </footer>
+
+    <script>
+        const versions = []; // Array to store version information
+
+        // Function to upload a new version
+        function uploadVersion() {
+            const fileInput = document.getElementById('versionFile');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const version = {
+                        name: file.name,
+                        content: e.target.result,
+                        date: new Date().toLocaleString()
+                    };
+                    versions.push(version);
+                    displayVersions();
+                    fileInput.value = ""; // Clear file input
+                };
+                reader.readAsText(file); // Read the file as text
+            } else {
+                alert("Please select a file to upload.");
+            }
+        }
+
+        // Function to display versions
+        function displayVersions() {
+            const versionList = document.getElementById('versionList');
+            versionList.innerHTML = ""; // Clear the existing list
+
+            versions.forEach((version, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${version.name} - ${version.date} 
+                    <button onclick="downloadVersion(${index})">Download</button>
+                    <button onclick="deleteVersion(${index})">Delete</button>
+                `;
+                versionList.appendChild(li);
+            });
+        }
+
+        // Function to download a version
+        function downloadVersion(index) {
+            const version = versions[index];
+            const blob = new Blob([version.content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = version.name;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Function to delete a version
+        function deleteVersion(index) {
+            versions.splice(index, 1); // Remove version from array
+            displayVersions(); // Refresh version list
+        }
+    </script>
+</body>
+
+</html>

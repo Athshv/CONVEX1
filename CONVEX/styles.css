@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0e7ff;
+    color: #3e1f76;
+    line-height: 1.6;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5e35b1;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    flex-grow: 1;
+}
+
+.logo-img {
+    width: 100px;
+}
+
+.nav-button {
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+}
+
+.nav-button:hover {
+    background-color: #b39ddb;
+    transform: scale(1.05);
+}
+
+main {
+    margin-top: 100px; /* Space for the fixed header */
+    padding: 20px;
+}
+
+.about-us {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2 {
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.design-board {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e1bee7;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.canvas {
+    border: 1px solid #6200ea;
+    background-color: #f9f9f9;
+    display: block;
+    margin: 0 auto;
+}
+
+.tools {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.tool-button, .clear-button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 0 5px;
+}
+
+.tool-button:hover, .clear-button:hover {
+    background-color: #7e57c2;
+    transform: scale(1.05);
+}
+
+input[type="color"] {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    width: 100px;
+    margin-left: 10px;
+}
+
+.footer {
+    background-color: #5e35b1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}

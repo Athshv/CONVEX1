@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convex - Design Collaboration Platform</title>
+    <link rel="stylesheet" href="n1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Consolas&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #007ACC;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo-img {
+            width: 100px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #007ACC;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Convex Logo" class="logo-img">
+            <p class="tagline">Where Creativity Expands</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="projects/projects.html">Projects</a></li>
+                <li><a href="#">Upload</a></li>
+                <li><a href="feedback/feedback.html">Feedback</a></li>
+                <li><a href="version-control/index.html">Version Control</a></li>
+                <li><a href="C:\Users\akhil\OneDrive\Desktop\IITHYD\CONVEX\dashboard.html">Design Board</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Convex</h2>
+            <p>Convex is an innovative design collaboration platform that empowers designers to work together seamlessly
+                on projects, share ideas, and enhance their creative processes. By providing tools and features tailored
+                to the needs of design professionals, Convex fosters a collaborative environment where creativity can
+                flourish.</p>
+
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>Real-Time Collaboration:</strong> Designers can work together in real-time, making it easy
+                    to brainstorm, share feedback, and iterate on designs without delay.</li>
+                <li><strong>Project Management:</strong> Organize projects efficiently with features like task
+                    assignments, progress tracking, and deadline management to ensure timely delivery.</li>
+                <li><strong>Upload & Share Designs:</strong> Easily upload and share design files, ensuring everyone has
+                    access to the latest versions. Support for various file types enhances versatility.</li>
+                <li><strong>Version Control:</strong> Implement version control to track changes and revert to previous
+                    iterations if necessary.</li>
+                <li><strong>Feedback Mechanism:</strong> Collaborators can leave comments and suggestions directly on
+                    the designs, making the feedback process straightforward and integrated into the workflow.</li>
+                <li><strong>Design Board:</strong> A centralized dashboard allows designers to visualize their projects,
+                    monitor progress, and manage tasks effectively.</li>
+                <li><strong>User-Friendly Interface:</strong> Convex boasts an intuitive interface, making it easy for
+                    users to navigate through projects, access tools, and communicate with team members.</li>
+                <li><strong>Community Engagement:</strong> Join a vibrant community of designers to share insights,
+                    learn from others, and participate in discussions that drive creative innovation.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Convex - Design Collaboration Platform</p>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: "https://athshv.github.io/Convex/", // Replace with your actual URL
+                width: 128,
+                height: 128,
+            });
+        });
+    </script>
+
+    <script src="n1.js"></script>
+</body>
+
+</html>
